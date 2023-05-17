@@ -27155,6 +27155,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 		while ($thereistextarea) { // Recover <textarea attributes>content</textarea>
 			$temp2[2][$iterator] = preg_replace('/\t/', str_repeat(" ", $tabSpaces), $temp2[2][$iterator]);
 			$temp2[2][$iterator] = str_replace('\\', "\\\\", $temp2[2][$iterator]);
+            // Modify this line to escape the dollar sign
+            $temp2[2][$iterator] = str_replace('$', '\\$', $temp2[2][$iterator]);
 			$html = preg_replace('#<textarea(.*?)>(.*?)</textarea>#si', '<aeratxet' . $temp2[1][$iterator] . '>' . trim($temp2[2][$iterator]) . '</aeratxet>', $html, 1);
 			$thereistextarea--;
 			$iterator++;
